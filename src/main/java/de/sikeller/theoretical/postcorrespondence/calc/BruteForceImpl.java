@@ -12,6 +12,7 @@ public class BruteForceImpl implements CorrespondenceCalculator {
 
     private static final int MAX_RECURSION = 66;
     private static final int MAX_CALC_STEPS = 1000000;
+    private static final int MAX_SOLUTIONS = 20;
 
     @Override
     public CalcResult calc(BlockSet blockSet) {
@@ -23,7 +24,7 @@ public class BruteForceImpl implements CorrespondenceCalculator {
     }
 
     private void test(AtomicLong steps, BlockSet blockSet, Combinator combinator, Set<Combinator> result, Set<Combinator> broken, int maxRecursion) {
-        if (steps.incrementAndGet() > MAX_CALC_STEPS || maxRecursion < 0) {
+        if (steps.incrementAndGet() > MAX_CALC_STEPS || maxRecursion < 0 || result.size() >= 20) {
             broken.add(combinator);
             return;
         }
