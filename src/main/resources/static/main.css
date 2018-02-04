@@ -28,14 +28,14 @@
 
 .submit-btn {
     background-color: #fff;
-    border: 1px #ccc solid;
-    color: #ccc;
+    border: 1px #3949AB solid;
+    color: #3949AB;
     padding: 1em;
     margin: 0.5em;
 }
 
 .submit-btn:hover {
-    background-color: #ccc;
+    background-color: #3949AB;
     color: #fff;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .add-btn {
-    border-color: #ccc;
+    border-color: #3949AB;
     display: table;
 }
 
@@ -59,11 +59,11 @@
     display: table-cell;
     font-size: 2em;
     vertical-align: middle;
-    color: #ccc;
+    color: #3949AB;
 }
 
 .add-btn:hover {
-    background-color: #ccc;
+    background-color: #3949AB;
 }
 
 .add-btn:hover > div {
@@ -78,7 +78,7 @@
     position: absolute;
     left: 0.5em;
     top: -1em;
-    color: #ccc;
+    color: #3949AB;
 }
 
 .block > div > input {
@@ -97,8 +97,8 @@
 
 .block > .remove-btn {
     background-color: #fff;
-    color: #ccc;
-    border: 1px #ccc solid;
+    color: #3949AB;
+    border: 1px #3949AB solid;
     line-height: 0.7em;
     width: 1em;
     height: 1em;
@@ -110,7 +110,7 @@
 }
 
 .block > .remove-btn:hover {
-    background-color: #ccc;
+    background-color: #3949AB;
     color: #fff;
 }
 
@@ -136,7 +136,7 @@
     border-radius: 1px;
     -webkit-transform-origin: 50% 100%;
     transform-origin: 50% 100%;
-    background-color: #ccc;
+    background-color: #3949AB;
     -webkit-animation: bar linear 2.8s infinite;
     animation: bar linear 2.8s infinite;
     will-change: transform;
