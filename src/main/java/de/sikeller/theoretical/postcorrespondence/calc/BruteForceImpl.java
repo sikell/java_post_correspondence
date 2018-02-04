@@ -5,13 +5,15 @@ import de.sikeller.theoretical.postcorrespondence.model.BlockSet;
 import de.sikeller.theoretical.postcorrespondence.model.Combinator;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class BruteForceImpl implements CorrespondenceCalculator {
 
     private static final int MAX_RECURSION = 66;
-    private static final int MAX_CALC_STEPS = 1000000;
+    private static final int MAX_CALC_STEPS = 100000;
     private static final int MAX_SOLUTIONS = 20;
 
     @Override
@@ -33,13 +35,21 @@ public class BruteForceImpl implements CorrespondenceCalculator {
             result.add(combinator);
             return;
         }
+        List<Combinator> nextCombinators = new LinkedList<>();
         for (Integer i : blockSet.getSet().keySet()) {
             Block block = blockSet.get(i);
             if (combinator.valid(block)) {
                 Combinator newCombinator = combinator.copy();
                 newCombinator.add(i, block);
-                test(steps, blockSet, newCombinator, result, broken, newMaxRecursion);
+                nextCombinators.add(newCombinator);
             }
+        }
+        for(Combinator c : nextCombinators) {
+            if (combinator.finished()) {
+                result.add(combinator);
+                return;
+            }
+            test(steps, blockSet, c, result, broken, newMaxRecursion);
         }
     }
 
