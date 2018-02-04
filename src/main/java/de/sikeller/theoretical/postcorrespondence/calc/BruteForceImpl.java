@@ -24,7 +24,7 @@ public class BruteForceImpl implements CorrespondenceCalculator {
     }
 
     private void test(AtomicLong steps, BlockSet blockSet, Combinator combinator, Set<Combinator> result, Set<Combinator> broken, int maxRecursion) {
-        if (steps.incrementAndGet() > MAX_CALC_STEPS || maxRecursion < 0 || result.size() >= 20) {
+        if (steps.incrementAndGet() > MAX_CALC_STEPS || maxRecursion < 0 || result.size() >= MAX_SOLUTIONS) {
             broken.add(combinator);
             return;
         }
