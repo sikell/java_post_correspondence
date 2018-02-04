@@ -3,6 +3,7 @@ package de.sikeller.theoretical.postcorrespondence.rest;
 import de.sikeller.theoretical.postcorrespondence.calc.CalcResult;
 import de.sikeller.theoretical.postcorrespondence.calc.CorrespondenceCalculator;
 import de.sikeller.theoretical.postcorrespondence.model.BlockSet;
+import de.sikeller.theoretical.postcorrespondence.model.CalcConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,8 +20,8 @@ public class Controller {
     }
 
     @PostMapping("/calc")
-    public CalcResult calc(@RequestBody BlockSet blockSet) {
-        return correspondenceCalculator.calc(blockSet);
+    public CalcResult calc(@RequestBody CalcConfig input) {
+        return correspondenceCalculator.calc(input);
     }
 
 }

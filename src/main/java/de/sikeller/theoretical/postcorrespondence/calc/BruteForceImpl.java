@@ -2,6 +2,7 @@ package de.sikeller.theoretical.postcorrespondence.calc;
 
 import de.sikeller.theoretical.postcorrespondence.model.Block;
 import de.sikeller.theoretical.postcorrespondence.model.BlockSet;
+import de.sikeller.theoretical.postcorrespondence.model.CalcConfig;
 import de.sikeller.theoretical.postcorrespondence.model.Combinator;
 
 import java.util.*;
@@ -15,7 +16,8 @@ public class BruteForceImpl implements CorrespondenceCalculator {
     private static final Random DETERMINISTIC_RANDOM = new Random(5L);
 
     @Override
-    public CalcResult calc(BlockSet blockSet) {
+    public CalcResult calc(CalcConfig config) {
+        BlockSet blockSet = config.getBlocks();
         Set<Combinator> result = new HashSet<>();
         Set<Combinator> broken = new HashSet<>();
         AtomicLong steps = new AtomicLong();

@@ -1,7 +1,7 @@
 package de.sikeller.theoretical.postcorrespondence.calc;
 
-import de.sikeller.theoretical.postcorrespondence.model.BlockSet;
+import de.sikeller.theoretical.postcorrespondence.model.CalcConfig;
 
 public interface CorrespondenceCalculator {
-    CalcResult calc(BlockSet blockSet);
+    CalcResult calc(CalcConfig config);
 }

@@ -2,6 +2,7 @@ package de.sikeller.theoretical.postcorrespondence.calc;
 
 import de.sikeller.theoretical.postcorrespondence.model.Block;
 import de.sikeller.theoretical.postcorrespondence.model.BlockSet;
+import de.sikeller.theoretical.postcorrespondence.model.CalcConfig;
 import de.sikeller.theoretical.postcorrespondence.model.Combinator;
 
 import java.util.*;
@@ -13,7 +14,8 @@ public class BruteForceTreeImpl implements CorrespondenceCalculator {
     private static final int MAX_EXECUTION_TIME = 30000;
 
     @Override
-    public CalcResult calc(BlockSet blockSet) {
+    public CalcResult calc(CalcConfig config) {
+        BlockSet blockSet = config.getBlocks();
         Set<Combinator> possibleResults = new HashSet<>();
         Set<Combinator> result = new HashSet<>();
         long startMillis = System.currentTimeMillis();
@@ -26,9 +28,10 @@ public class BruteForceTreeImpl implements CorrespondenceCalculator {
                 possibleResults.add(combinator);
             }
         }
+        final int maxSolutions = Math.max(1, Math.min(config.getSolutions(), MAX_SOLUTIONS));
         while (!possibleResults.isEmpty()
                 && System.currentTimeMillis() - startMillis < MAX_EXECUTION_TIME
-                && result.size() < MAX_SOLUTIONS) {
+                && result.size() < maxSolutions) {
             Set<Combinator> newPossibles = new HashSet<>();
             for (Combinator combinator : possibleResults) {
                 steps++;

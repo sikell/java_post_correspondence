@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Post correspondence</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="main.css?v=1"/>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
-    <script src="main.js"></script>
+    <script src="main.js?v=1"></script>
 </head>
 <body ng-controller="calcController as ctrl">
 <div class="center">
@@ -41,8 +41,8 @@
     <div ng-repeat="result in ctrl.result.results | orderByLength track by $index" class="result">
         {{result.result.join(", ")}}
     </div>
-    <div ng-show="ctrl.result.stopped">
-        {{ctrl.result.stopped}} possible solutions, but stopped cause of to long execution time.
+    <div ng-show="ctrl.result.stopped" class="result">
+        {{ctrl.result.stopped}} possible other solutions.
     </div>
 
     <ul role="progressbar" aria-busy="true" ng-show="ctrl.loading">
@@ -59,6 +59,10 @@
         <button ng-click="ctrl.calc()"
                 ng-disabled="ctrl.loading"
                 class="submit-btn">Calculate</button>
+        <select ng-model="ctrl.input.solutions"
+            class="solutions-select">
+            <option ng-repeat="i in ctrl.getNumber(20) track by $index" value="{{$index + 1}}">{{$index + 1}}</option>
+        </select>
     </div>
 
 </div>

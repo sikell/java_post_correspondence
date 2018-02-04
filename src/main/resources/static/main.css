@@ -26,6 +26,7 @@
     margin: 0 auto;
 }
 
+.solutions-select,
 .submit-btn {
     background-color: #fff;
     border: 1px #3949AB solid;
@@ -33,8 +34,12 @@
     padding: 1em;
     margin: 0.5em;
 }
-
-.submit-btn:hover {
+.solutions-select:hover,
+.solutions-select:active,
+.solutions-select:focus,
+.submit-btn:hover,
+.submit-btn:active,
+.submit-btn:focus {
     background-color: #3949AB;
     color: #fff;
 }

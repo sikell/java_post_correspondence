@@ -12,14 +12,14 @@
                     return;
                 }
                 ctrl.loading = true;
-                var data = {set: {}};
+                var data = {blocks: {set: {}}};
                 angular.forEach(ctrl.input.set, function (val, idx) {
-                    data.set[idx + 1] = val;
+                    data.blocks.set[idx + 1] = val;
                 });
+                data.solutions = ctrl.input.solutions;
                 ctrl.result = {};
                 $http.post("./calc", data).then(function (data) {
                     ctrl.result = data.data;
-
                     ctrl.loading = false;
                 });
             };
@@ -37,7 +37,12 @@
 
             ctrl.result = {};
 
+            ctrl.getNumber = function(num) {
+                return new Array(num);
+            };
+
             /*ctrl.input = {
+                "solutions": "1",
                 "set": [
                     {"top": "001", "bottom": "0"},
                     {"top": "01", "bottom": "011"},
@@ -46,6 +51,7 @@
                 ]
             };*/
             ctrl.input = {
+                "solutions": "1",
                 "set": [
                     {"top":"10","bottom":"1"},
                     {"top":"11","bottom":"01"},
