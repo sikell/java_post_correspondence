@@ -1,6 +1,6 @@
 package de.sikeller.theoretical.postcorrespondence.rest;
 
-import de.sikeller.theoretical.postcorrespondence.calc.BruteForceImpl;
+import de.sikeller.theoretical.postcorrespondence.calc.BruteForceTreeImpl;
 import de.sikeller.theoretical.postcorrespondence.calc.CorrespondenceCalculator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,7 @@ public class Config extends WebMvcConfigurerAdapter {
 
     @Bean
     public CorrespondenceCalculator correspondenceCalculator() {
-        return new BruteForceImpl();
+        return new BruteForceTreeImpl();
     }
 
 }

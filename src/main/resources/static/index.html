@@ -35,20 +35,14 @@
     <h2 ng-show="ctrl.result.results">Result:</h2>
     <div ng-show="ctrl.result.results" class="result">Calculation steps: {{ctrl.result.calculationSteps}}</div>
     <div ng-show="ctrl.result.results && !ctrl.result.stopped.length
-        && !ctrl.result.results.length && ctrl.result.calculationSteps < 100000" class="result">
-        No solution!
+        && !ctrl.result.results.length" class="result">
+        No solution after {{ctrl.result.calculationSteps}} steps!
     </div>
-    <div ng-show="ctrl.result.results && !ctrl.result.stopped.length
-        && !ctrl.result.results.length && ctrl.result.calculationSteps >= 100000" class="result">
-        No solution after {{ctrl.result.calculationSteps}} steps, stop calculation!
-    </div>
-    <div ng-repeat="result in ctrl.result.results track by $index" class="result">
+    <div ng-repeat="result in ctrl.result.results | orderByLength track by $index" class="result">
         {{result.result.join(", ")}}
     </div>
     <div ng-show="ctrl.result.stopped">
-        Possible other solutions, but stopped cause of to many recursive steps,
-        or to many solutions or to many calculation steps:
-        {{ctrl.result.stopped}}
+        {{ctrl.result.stopped}} possible solutions, but stopped cause of to long execution time.
     </div>
 
     <ul role="progressbar" aria-busy="true" ng-show="ctrl.loading">
