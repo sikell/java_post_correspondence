@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class BruteForceTreeImpl implements CorrespondenceCalculator {
 
     private static final int MAX_SOLUTIONS = 30;
-    private static final int MAX_EXECUTION_TIME = 30000;
+    private static final int MAX_EXECUTION_TIME = 15000;
 
     @Override
     public CalcResult calc(CalcConfig config) {
@@ -35,6 +35,9 @@ public class BruteForceTreeImpl implements CorrespondenceCalculator {
             Set<Combinator> newPossibles = new HashSet<>();
             for (Combinator combinator : possibleResults) {
                 steps++;
+                if(System.currentTimeMillis() - startMillis >= MAX_EXECUTION_TIME) {
+                    break;
+                }
                 if (combinator.finished()) {
                     result.add(combinator);
                 } else {
