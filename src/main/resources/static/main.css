@@ -1,0 +1,284 @@
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+*[ng-click], input {
+    cursor: pointer;
+}
+
+.clearfix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+}
+
+.center {
+    max-width: 100%;
+    padding: 0.5em;
+    width: 800px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.submit-btn {
+    background-color: #fff;
+    border: 1px #ccc solid;
+    color: #ccc;
+    padding: 1em;
+    margin: 0.5em;
+}
+
+.submit-btn:hover {
+    background-color: #ccc;
+    color: #fff;
+}
+
+.add-btn,
+.block {
+    float: left;
+    width: 6em;
+    height: 8em;
+    padding: 0.2em;
+    border: 1px #000 solid;
+    margin: 1em;
+    position: relative;
+}
+
+.add-btn {
+    border-color: #ccc;
+    display: table;
+}
+
+.add-btn > div {
+    display: table-cell;
+    font-size: 2em;
+    vertical-align: middle;
+    color: #ccc;
+}
+
+.add-btn:hover {
+    background-color: #ccc;
+}
+
+.add-btn:hover > div {
+    color: #fff;
+}
+
+.block > div {
+    margin: 1em 0;
+}
+
+.block > .index {
+    position: absolute;
+    left: 0.5em;
+    top: -1em;
+    color: #ccc;
+}
+
+.block > div > input {
+    border: none;
+    background-color: transparent;
+    padding: 0.5em;
+    width: 100%;
+    text-align: center;
+}
+
+.block > div > input:hover,
+.block > div > input:focus,
+.block > div > input:active {
+    background-color: #eee;
+}
+
+.block > .remove-btn {
+    background-color: #fff;
+    color: #ccc;
+    border: 1px #ccc solid;
+    line-height: 0.7em;
+    width: 1em;
+    height: 1em;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    position: absolute;
+    right: -0.5em;
+    top: -0.5em;
+}
+
+.block > .remove-btn:hover {
+    background-color: #ccc;
+    color: #fff;
+}
+
+.result {
+    padding: 0.5em;
+}
+
+
+/* progressbar */
+[role="progressbar"] {
+    position: relative;
+    padding: 0;
+    width: 100px;
+    height: 25px;
+    list-style: none;
+}
+[role="progressbar"] li {
+    display: block;
+    position: absolute;
+    right: 0;
+    width: 3px;
+    height: 25px;
+    border-radius: 1px;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    background-color: #ccc;
+    -webkit-animation: bar linear 2.8s infinite;
+    animation: bar linear 2.8s infinite;
+    will-change: transform;
+}
+[role="progressbar"] li:nth-child(1) {
+    -webkit-transform: translateX(0) rotate(0deg);
+    transform: translateX(0) rotate(0deg);
+    opacity: 0.2;
+}
+[role="progressbar"] li:nth-child(2) {
+    -webkit-transform: translateX(-15px) rotate(0deg);
+    transform: translateX(-15px) rotate(0deg);
+    -webkit-animation-delay: -0.4s;
+    animation-delay: -0.4s;
+}
+[role="progressbar"] li:nth-child(3) {
+    -webkit-transform: translateX(-30px) rotate(0deg);
+    transform: translateX(-30px) rotate(0deg);
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+[role="progressbar"] li:nth-child(4) {
+    -webkit-transform: translateX(-45px) rotate(10deg);
+    transform: translateX(-45px) rotate(10deg);
+    -webkit-animation-delay: -1.2s;
+    animation-delay: -1.2s;
+}
+[role="progressbar"] li:nth-child(5) {
+    -webkit-transform: translateX(-60px) rotate(40deg);
+    transform: translateX(-60px) rotate(40deg);
+    -webkit-animation-delay: -1.6s;
+    animation-delay: -1.6s;
+}
+[role="progressbar"] li:nth-child(6) {
+    -webkit-transform: translateX(-75px) rotate(62deg);
+    transform: translateX(-75px) rotate(62deg);
+    -webkit-animation-delay: -2s;
+    animation-delay: -2s;
+}
+[role="progressbar"] li:nth-child(7) {
+    -webkit-transform: translateX(-90px) rotate(72deg);
+    transform: translateX(-90px) rotate(72deg);
+    -webkit-animation-delay: -2.4s;
+    animation-delay: -2.4s;
+}
+
+@-webkit-keyframes bar {
+    0% {
+        -webkit-transform: translateX(0) rotate(0deg);
+        transform: translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    14.28% {
+        -webkit-transform: translateX(-15px) rotate(0deg);
+        transform: translateX(-15px) rotate(0deg);
+        opacity: 1;
+    }
+    28.56% {
+        -webkit-transform: translateX(-30px) rotate(0deg);
+        transform: translateX(-30px) rotate(0deg);
+        opacity: 1;
+    }
+    37.12% {
+        -webkit-transform: translateX(-39px) rotate(0deg);
+        transform: translateX(-39px) rotate(0deg);
+        opacity: 1;
+    }
+    42.84% {
+        -webkit-transform: translateX(-45px) rotate(10deg);
+        transform: translateX(-45px) rotate(10deg);
+        opacity: 1;
+    }
+    57.12% {
+        -webkit-transform: translateX(-60px) rotate(40deg);
+        transform: translateX(-60px) rotate(40deg);
+        opacity: 1;
+    }
+    71.4% {
+        -webkit-transform: translateX(-75px) rotate(62deg);
+        transform: translateX(-75px) rotate(62deg);
+        opacity: 1;
+    }
+    85.68% {
+        -webkit-transform: translateX(-90px) rotate(72deg);
+        transform: translateX(-90px) rotate(72deg);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateX(-105px) rotate(74deg);
+        transform: translateX(-105px) rotate(74deg);
+        opacity: 0;
+    }
+}
+
+@keyframes bar {
+    0% {
+        -webkit-transform: translateX(0) rotate(0deg);
+        transform: translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    14.28% {
+        -webkit-transform: translateX(-15px) rotate(0deg);
+        transform: translateX(-15px) rotate(0deg);
+        opacity: 1;
+    }
+    28.56% {
+        -webkit-transform: translateX(-30px) rotate(0deg);
+        transform: translateX(-30px) rotate(0deg);
+        opacity: 1;
+    }
+    37.12% {
+        -webkit-transform: translateX(-39px) rotate(0deg);
+        transform: translateX(-39px) rotate(0deg);
+        opacity: 1;
+    }
+    42.84% {
+        -webkit-transform: translateX(-45px) rotate(10deg);
+        transform: translateX(-45px) rotate(10deg);
+        opacity: 1;
+    }
+    57.12% {
+        -webkit-transform: translateX(-60px) rotate(40deg);
+        transform: translateX(-60px) rotate(40deg);
+        opacity: 1;
+    }
+    71.4% {
+        -webkit-transform: translateX(-75px) rotate(62deg);
+        transform: translateX(-75px) rotate(62deg);
+        opacity: 1;
+    }
+    85.68% {
+        -webkit-transform: translateX(-90px) rotate(72deg);
+        transform: translateX(-90px) rotate(72deg);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateX(-105px) rotate(74deg);
+        transform: translateX(-105px) rotate(74deg);
+        opacity: 0;
+    }
+}
+
+[role="progressbar"] {
+    margin: 1em auto;
+}

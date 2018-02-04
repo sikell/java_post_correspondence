@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pcApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Post correspondence</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <script src="main.js"></script>
+</head>
+<body ng-controller="calcController as ctrl">
+<div class="center">
+    <h1>Post correspondence problem</h1>
+    <h2>Input blocks:</h2>
+    <div class="clearfix blockrow">
+        <div ng-repeat="block in ctrl.input.set track by $index" class="block">
+            <div class="index">{{$index + 1}}</div>
+            <div class="remove-btn" ng-click="ctrl.remove($index)">-</div>
+            <div>
+                <input type="text"
+                       required
+                       ng-model="block.top"/>
+            </div>
+            <div>
+                <input type="text"
+                       required
+                       ng-model="block.bottom"/>
+            </div>
+        </div>
+        <div ng-click="ctrl.add()" class="add-btn">
+            <div>+</div>
+        </div>
+    </div>
+
+    <h2 ng-show="ctrl.result.results">Result:</h2>
+    <div ng-show="ctrl.result.results" class="result">Calculation steps: {{ctrl.result.calculationSteps}}</div>
+    <div ng-show="ctrl.result.stopped.length === 0 && ctrl.result.results.length === 0" class="result">
+        No solution!
+    </div>
+    <div ng-repeat="result in ctrl.result.results track by $index" class="result">
+        {{result.result.join(", ")}}
+    </div>
+    <div ng-show="ctrl.result.stopped">
+        Possible other solutions, but stopped cause of to many recursive steps:
+        {{ctrl.result.stopped}}
+    </div>
+
+    <ul role="progressbar" aria-busy="true" ng-show="ctrl.loading">
+        <li role="presentation"></li>
+        <li role="presentation"></li>
+        <li role="presentation"></li>
+        <li role="presentation"></li>
+        <li role="presentation"></li>
+        <li role="presentation"></li>
+        <li role="presentation"></li>
+    </ul>
+
+    <div>
+        <button ng-click="ctrl.calc()"
+                ng-disabled="ctrl.loading"
+                class="submit-btn">Calculate</button>
+    </div>
+
+</div>
+</body>
+</html>
