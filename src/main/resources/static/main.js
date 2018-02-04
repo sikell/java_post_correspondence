@@ -6,6 +6,7 @@
             var ctrl = this;
 
             ctrl.loading = false;
+            ctrl.failure = false;
 
             ctrl.calc = function () {
                 if (ctrl.loading) {
@@ -19,7 +20,11 @@
                 data.solutions = ctrl.input.solutions;
                 ctrl.result = {};
                 $http.post("./calc", data).then(function (data) {
+                    ctrl.failure = false;
                     ctrl.result = data.data;
+                    ctrl.loading = false;
+                }, function() {
+                    ctrl.failure = true;
                     ctrl.loading = false;
                 });
             };

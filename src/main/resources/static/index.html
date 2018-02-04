@@ -44,6 +44,9 @@
     <div ng-show="ctrl.result.stopped" class="result">
         {{ctrl.result.stopped}} possible other solutions.
     </div>
+    <div ng-show="ctrl.failure" class="result">
+        Request failed!!!!!
+    </div>
 
     <ul role="progressbar" aria-busy="true" ng-show="ctrl.loading">
         <li role="presentation"></li>
