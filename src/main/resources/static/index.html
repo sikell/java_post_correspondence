@@ -34,7 +34,7 @@
 
     <h2 ng-show="ctrl.result.results">Result:</h2>
     <div ng-show="ctrl.result.results" class="result">Calculation steps: {{ctrl.result.calculationSteps}}</div>
-    <div ng-show="ctrl.result.stopped.length === 0 && ctrl.result.results.length === 0" class="result">
+    <div ng-show="!ctrl.result.stopped.length && !ctrl.result.results.length" class="result">
         No solution!
     </div>
     <div ng-repeat="result in ctrl.result.results track by $index" class="result">
