@@ -7,6 +7,9 @@ import java.util.List;
 
 @EqualsAndHashCode(of = "result")
 public class Combinator {
+
+    private static final int LARGE_DIFF = 1000;
+
     private List<Integer> result = new LinkedList<>();
     private StringBuilder top = new StringBuilder();
     private StringBuilder bottom = new StringBuilder();
@@ -40,6 +43,10 @@ public class Combinator {
     public boolean finished() {
         return top.length() == bottom.length() && result.size() > 0
                 && top.toString().equals(bottom.toString());
+    }
+
+    public boolean largeDiff() {
+        return Math.abs(top.length() - bottom.length()) >= LARGE_DIFF;
     }
 
     public List<Integer> getResult() {

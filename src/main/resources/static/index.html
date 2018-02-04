@@ -34,14 +34,20 @@
 
     <h2 ng-show="ctrl.result.results">Result:</h2>
     <div ng-show="ctrl.result.results" class="result">Calculation steps: {{ctrl.result.calculationSteps}}</div>
-    <div ng-show="ctrl.result.results && !ctrl.result.stopped.length && !ctrl.result.results.length" class="result">
+    <div ng-show="ctrl.result.results && !ctrl.result.stopped.length
+        && !ctrl.result.results.length && ctrl.result.calculationSteps < 100000" class="result">
         No solution!
+    </div>
+    <div ng-show="ctrl.result.results && !ctrl.result.stopped.length
+        && !ctrl.result.results.length && ctrl.result.calculationSteps >= 100000" class="result">
+        No solution after {{ctrl.result.calculationSteps}} steps, stop calculation!
     </div>
     <div ng-repeat="result in ctrl.result.results track by $index" class="result">
         {{result.result.join(", ")}}
     </div>
     <div ng-show="ctrl.result.stopped">
-        Possible other solutions, but stopped cause of to many recursive steps:
+        Possible other solutions, but stopped cause of to many recursive steps,
+        or to many solutions or to many calculation steps:
         {{ctrl.result.stopped}}
     </div>
 

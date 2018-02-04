@@ -4,10 +4,7 @@ import de.sikeller.theoretical.postcorrespondence.model.Block;
 import de.sikeller.theoretical.postcorrespondence.model.BlockSet;
 import de.sikeller.theoretical.postcorrespondence.model.Combinator;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class BruteForceImpl implements CorrespondenceCalculator {
@@ -15,6 +12,7 @@ public class BruteForceImpl implements CorrespondenceCalculator {
     private static final int MAX_RECURSION = 66;
     private static final int MAX_CALC_STEPS = 100000;
     private static final int MAX_SOLUTIONS = 20;
+    private static final Random DETERMINISTIC_RANDOM = new Random(5L);
 
     @Override
     public CalcResult calc(BlockSet blockSet) {
@@ -26,7 +24,8 @@ public class BruteForceImpl implements CorrespondenceCalculator {
     }
 
     private void test(AtomicLong steps, BlockSet blockSet, Combinator combinator, Set<Combinator> result, Set<Combinator> broken, int maxRecursion) {
-        if (steps.incrementAndGet() > MAX_CALC_STEPS || maxRecursion < 0 || result.size() >= MAX_SOLUTIONS) {
+        if (steps.incrementAndGet() > MAX_CALC_STEPS || maxRecursion < 0
+                || result.size() >= MAX_SOLUTIONS || combinator.largeDiff()) {
             broken.add(combinator);
             return;
         }
@@ -44,11 +43,8 @@ public class BruteForceImpl implements CorrespondenceCalculator {
                 nextCombinators.add(newCombinator);
             }
         }
+        Collections.shuffle(nextCombinators, DETERMINISTIC_RANDOM);
         for(Combinator c : nextCombinators) {
-            if (combinator.finished()) {
-                result.add(combinator);
-                return;
-            }
             test(steps, blockSet, c, result, broken, newMaxRecursion);
         }
     }
