@@ -6,23 +6,25 @@ import de.sikeller.theoretical.postcorrespondence.model.Combinator;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class BruteForceImpl implements CorrespondenceCalculator {
 
-    private static final int MAX_RECURSION = 100;
+    private static final int MAX_RECURSION = 66;
+    private static final int MAX_CALC_STEPS = 1000000;
 
     @Override
     public CalcResult calc(BlockSet blockSet) {
-        HashSet<Combinator> result = new HashSet<>();
-        HashSet<Combinator> broken = new HashSet<>();
-        test(blockSet, new Combinator(), result, broken, MAX_RECURSION);
-        return new CalcResult(result, broken);
+        Set<Combinator> result = new HashSet<>();
+        Set<Combinator> broken = new HashSet<>();
+        AtomicLong steps = new AtomicLong();
+        test(steps, blockSet, new Combinator(), result, broken, MAX_RECURSION);
+        return new CalcResult(result, broken.size(), steps.get());
     }
 
-    private static void test(BlockSet blockSet, Combinator combinator, Set<Combinator> result, Set<Combinator> broken, int maxRecursion) {
-        if (maxRecursion < 0) {
+    private void test(AtomicLong steps, BlockSet blockSet, Combinator combinator, Set<Combinator> result, Set<Combinator> broken, int maxRecursion) {
+        if (steps.incrementAndGet() > MAX_CALC_STEPS || maxRecursion < 0) {
             broken.add(combinator);
-            System.err.println("Max recursion reached: " + combinator);
             return;
         }
         int newMaxRecursion = maxRecursion - 1;
@@ -35,7 +37,7 @@ public class BruteForceImpl implements CorrespondenceCalculator {
             if (combinator.valid(block)) {
                 Combinator newCombinator = combinator.copy();
                 newCombinator.add(i, block);
-                test(blockSet, newCombinator, result, broken, newMaxRecursion);
+                test(steps, blockSet, newCombinator, result, broken, newMaxRecursion);
             }
         }
     }

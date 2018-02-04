@@ -51,11 +51,4 @@ public class CombinatorTest {
         assertEquals(new Integer(2), result.get(1));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void getResultNotFinished() throws Exception {
-        Combinator sut = new Combinator();
-        sut.add(1, new Block("aba", "ab"));
-        sut.getResult();
-    }
-
 }

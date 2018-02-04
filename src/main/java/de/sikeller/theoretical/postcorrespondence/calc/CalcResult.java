@@ -8,5 +8,6 @@ import java.util.Set;
 @Data
 public class CalcResult {
     private final Set<Combinator> results;
-    private final Set<Combinator> stopped;
+    private final long stopped;
+    private final long calculationSteps;
 }

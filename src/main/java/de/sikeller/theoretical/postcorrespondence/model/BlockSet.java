@@ -1,18 +1,16 @@
 package de.sikeller.theoretical.postcorrespondence.model;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class BlockSet {
-    @Getter
-    private final Map<Integer, Block> set;
+    private Map<Integer, Block> set;
 
     public int size() {
         return set.size();

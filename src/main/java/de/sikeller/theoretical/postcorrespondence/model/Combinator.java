@@ -43,9 +43,6 @@ public class Combinator {
     }
 
     public List<Integer> getResult() {
-        if (!finished()) {
-            throw new IllegalArgumentException("Combination is not finished yet!");
-        }
         return new LinkedList<>(result);
     }
 
