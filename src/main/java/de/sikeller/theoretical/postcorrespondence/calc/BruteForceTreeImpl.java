@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class BruteForceTreeImpl implements CorrespondenceCalculator {
 
-    private static final int MAX_SOLUTIONS = 30;
+    private static final int MAX_SOLUTIONS = 100;
     private static final int MAX_EXECUTION_TIME = 15000;
 
     @Override

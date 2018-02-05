@@ -1,13 +1,18 @@
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    font-family: "Segoe UI", Verdana, sans-serif;
+    font-family: "Segoe UI Light", Verdana, sans-serif;
     padding: 0;
     margin: 0;
 }
 
 *[ng-click], input {
     cursor: pointer;
+}
+
+h1, h2 {
+    font-size: 1.2em;
+    color: #3949AB;
 }
 
 .clearfix:after {
@@ -33,6 +38,8 @@
     color: #3949AB;
     padding: 1em;
     margin: 0.5em;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
 }
 .solutions-select:hover,
 .solutions-select:active,
@@ -53,6 +60,8 @@
     border: 1px #000 solid;
     margin: 1em;
     position: relative;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
 }
 
 .add-btn {
@@ -76,7 +85,7 @@
 }
 
 .block > div {
-    margin: 1em 0;
+    margin: 0.9em 0;
 }
 
 .block > .index {
@@ -84,6 +93,7 @@
     left: 0.5em;
     top: -1em;
     color: #3949AB;
+    font-size: 1em;
 }
 
 .block > div > input {
@@ -92,6 +102,8 @@
     padding: 0.5em;
     width: 100%;
     text-align: center;
+    font-size: 1em;
+    font-weight: bold;
 }
 
 .block > div > input:hover,

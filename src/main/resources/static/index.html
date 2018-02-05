@@ -11,7 +11,6 @@
 <body ng-controller="calcController as ctrl">
 <div class="center">
     <h1>Post correspondence problem</h1>
-    <h2>Input blocks:</h2>
     <div class="clearfix blockrow">
         <div ng-repeat="block in ctrl.input.set track by $index" class="block">
             <div class="index">{{$index + 1}}</div>
@@ -32,21 +31,22 @@
         </div>
     </div>
 
-    <h2 ng-show="ctrl.result.results">Result:</h2>
-    <div ng-show="ctrl.result.results" class="result">Calculation steps: {{ctrl.result.calculationSteps}}</div>
-    <div ng-show="ctrl.result.results && ctrl.result.stopped
-        && !ctrl.result.results.length" class="result">
-        No solution found after {{ctrl.result.calculationSteps}} steps!
-    </div>
-    <div ng-show="ctrl.result.results && !ctrl.result.stopped
-        && !ctrl.result.results.length" class="result">
-        No solution!
-    </div>
-    <div ng-repeat="result in ctrl.result.results | orderByLength track by $index" class="result">
-        {{result.result.join(", ")}}
-    </div>
-    <div ng-show="ctrl.result.stopped" class="result">
-        {{ctrl.result.stopped}} possible other solutions.
+    <div ng-show="ctrl.result.results">
+        <h2>Result</h2>
+        <div class="result">Calculation steps: {{ctrl.result.calculationSteps}}</div>
+
+        <div ng-show="ctrl.result.stopped && !ctrl.result.results.length" class="result">
+            No solution found after {{ctrl.result.calculationSteps}} steps!
+        </div>
+        <div ng-show="!ctrl.result.stopped && !ctrl.result.results.length" class="result">
+            No solution!
+        </div>
+        <div ng-repeat="result in ctrl.result.results | orderByLength track by $index" class="result">
+            {{result.result.join(", ")}}
+        </div>
+        <div ng-show="ctrl.result.stopped" class="result">
+            {{ctrl.result.stopped}} possible other solutions.
+        </div>
     </div>
     <div ng-show="ctrl.failure" class="result">
         Request failed!!!!!
@@ -68,7 +68,7 @@
                 class="submit-btn">Calculate</button>
         <select ng-model="ctrl.input.solutions"
             class="solutions-select">
-            <option ng-repeat="i in ctrl.getNumber(20) track by $index" value="{{$index + 1}}">{{$index + 1}}</option>
+            <option ng-repeat="i in ctrl.getNumber(100) track by $index" value="{{$index + 1}}">max. {{$index + 1}}</option>
         </select>
     </div>
 
