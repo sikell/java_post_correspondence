@@ -35,7 +35,8 @@ public class BruteForceTreeImpl implements CorrespondenceCalculator {
             Set<Combinator> newPossibles = new HashSet<>();
             for (Combinator combinator : possibleResults) {
                 steps++;
-                if(System.currentTimeMillis() - startMillis >= MAX_EXECUTION_TIME) {
+                if(System.currentTimeMillis() - startMillis >= MAX_EXECUTION_TIME
+                        || result.size() >= maxSolutions) {
                     break;
                 }
                 if (combinator.finished()) {
